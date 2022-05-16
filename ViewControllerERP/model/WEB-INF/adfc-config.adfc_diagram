@@ -1,0 +1,59 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">ERPLogin</property>
+      <property
+         name="page">/ERPLogin.jsf</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>ERPLogin&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">125.396484</property>
+      <property
+         name="x">55.5</property>
+   </View>
+   <TaskFlowCall
+      id="TaskFlowCall3">
+      <property
+         name="taskFlowId">ERPLOGINBFT</property>
+      <property
+         name="activityId">ERPLOGINBFT</property>
+      <property
+         name="documentReference">/WEB-INF/ERPLOGIN-BFT.xml</property>
+      <property
+         name="runAsDialog">false</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>ERPLOGINBFT&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">128.44824</property>
+      <property
+         name="x">317.33984</property>
+   </TaskFlowCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="View2"
+      to="TaskFlowCall3">
+      <property
+         name="fromOutcome">ERP-ACT-LOGIN-APP</property>
+      <property
+         name="sdm:polyPoints">R50,97.0,125.0459,275.83984,128.09766,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="TaskFlowCall3"
+      to="View2">
+      <property
+         name="fromOutcome">ERPOracleReturnActivity</property>
+      <property
+         name="sdm:polyPoints">R36,R31</property>
+   </ControlFlowCase>
+</SDM>

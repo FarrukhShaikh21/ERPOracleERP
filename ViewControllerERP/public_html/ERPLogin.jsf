@@ -1,0 +1,354 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="ERPLogin.jsf" id="d1" initialFocusId="it1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p1" contentDelivery="lazyUncached"
+                      binding="#{viewScope.ERPMainClassBean.ERPForgotPopup}">
+                <af:panelWindow id="pw1" title="Can't access your account?" modal="true">
+                    <af:panelGroupLayout id="pgl22" styleClass="AFStretchWidth" layout="vertical">
+                        <af:panelGroupLayout id="pgl21" layout="horizontal">
+                            <af:image id="i6" source="#{resource['images:imgForgotUserID.png']}"/>
+                            <af:spacer width="15" height="10" id="s17"/>
+                            <af:link id="l2" partialSubmit="true"
+                                     action="#{viewScope.ERPMainClassBean.ERPdoHideForgotPopup}">
+                                <af:setActionListener from="#{''}" to="#{viewScope.ERPMainClassBean.ERPVerifyUserId}"/>
+                                <af:setActionListener from="#{'U'}"
+                                                      to="#{viewScope.ERPMainClassBean.erpRecoverUserPassword}"/>
+                                <af:setActionListener from="#{''}"
+                                                      to="#{viewScope.ERPMainClassBean.ERPStrVerificationCode}"/>
+                                <af:setActionListener from="#{''}"
+                                                      to="#{viewScope.ERPMainClassBean.erpStrEmailMobile}"/>
+                                <af:outputText value="Forgot User ID?" id="ot14" inlineStyle="font-weight:bold"/>
+                            </af:link>
+                        </af:panelGroupLayout>
+                        <af:separator id="s16"/>
+                        <af:panelGroupLayout id="pgl23" layout="horizontal">
+                            <af:image id="i7" source="#{resource['images:imgForgotPassword.png']}"/>
+                            <af:spacer width="15" height="10" id="s18"/>
+                            <af:link id="l3" partialSubmit="true"
+                                     action="#{viewScope.ERPMainClassBean.ERPdoHideForgotPopup}">
+                                <af:outputText value="Forgot Password?" id="ot15" inlineStyle="font-weight:bold"/>
+                                <af:setActionListener from="#{''}" to="#{viewScope.ERPMainClassBean.ERPVerifyUserId}"/>
+                                <af:setActionListener from="#{''}"
+                                                      to="#{viewScope.ERPMainClassBean.ERPStrVerificationCode}"/>
+                                <af:setActionListener from="#{'P'}"
+                                                      to="#{viewScope.ERPMainClassBean.erpRecoverUserPassword}"/>
+                                <af:setActionListener from="#{''}"
+                                                      to="#{viewScope.ERPMainClassBean.erpStrEmailMobile}"/>
+                            </af:link>
+                        </af:panelGroupLayout>
+                        <f:facet name="separator">
+                            <af:spacer width="1" height="1" id="s14" rendered="false"/>
+                        </f:facet>
+                    </af:panelGroupLayout>
+                </af:panelWindow>
+            </af:popup>
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p5"
+                      binding="#{viewScope.ERPMainClassBean.ERPVerifyByEmailMobile}">
+                <af:panelWindow id="pw5"
+                                title="Recover your Login ID #{viewScope.ERPMainClassBean.erpRecoverUserPassword}" modal="true">
+                    <af:panelGroupLayout id="pgl27" layout="horizontal">
+                        <af:inputText label="Label 4" id="it6" simple="true"
+                                      placeholder="email OR mobile (92xxxxxxxxxx)"
+                                      columns="30" maximumLength="60"
+                                      value="#{viewScope.ERPMainClassBean.erpStrEmailMobile}"
+                                      shortDesc='Mobile No should be (92xxxxxxxxxx) format.'/>
+                        <af:spacer width="10" height="10" id="s22"/>
+                        <af:button text="Next" id="b3" styleClass="ErpStandardButton" iconPosition="trailing"
+                                   icon="#{resource['images:imgNext.png']}"
+                                   action="#{viewScope.ERPMainClassBean.ERPdoHideEmailMobilePopup}"/>
+                    </af:panelGroupLayout>
+                </af:panelWindow>
+            </af:popup>
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p4" contentDelivery="lazyUncached"
+                      binding="#{viewScope.ERPMainClassBean.ERPEnterVerification}" clientComponent="true">
+                <af:panelWindow id="pw4"
+                                title="#{viewScope.ERPMainClassBean.ERPStringRecoverVia} (#{viewScope.ERPMainClassBean.ERPRecoveryType=='ERPEMAIL'? viewScope.ERPMainClassBean.erpEmail:viewScope.ERPMainClassBean.erpMobile})" modal="true">
+                    <af:panelGroupLayout id="pgl26" layout="horizontal" halign="center">
+                        <af:inputText label="Label 3" id="it5" simple="true" secret="true" rows="1" maximumLength="6"
+                                      contentStyle="text-align:center" placeholder="Enter Verification Code"
+                                      value="#{viewScope.ERPMainClassBean.ERPStrVerificationCode}"/>
+                        <af:spacer width="10" height="10" id="s21"/>
+                        <af:link text="Rest Password" id="l6" partialSubmit="true" icon="#{resource['images:imgDone.png']}"
+                                 iconPosition="trailing" styleClass="RecoveryMethod"
+                                 action="#{viewScope.ERPMainClassBean.ERPdoHideVerificationPopup}"
+                                 visible="#{viewScope.ERPMainClassBean.erpRecoverUserPassword=='P'}"/>
+                        <af:link text="#{viewScope.ERPMainClassBean.erpValueType=='E'?'Email User ID':'SMS User ID'}" id="l7" icon="#{resource['images:imgDone.png']}"
+                                 styleClass="RecoveryMethod"
+                                 visible="#{viewScope.ERPMainClassBean.erpRecoverUserPassword=='U'}"
+                                 partialSubmit="true"
+                                 action="#{viewScope.ERPMainClassBean.ERPdoHideVerificationPopup}"/>
+                    </af:panelGroupLayout>
+                </af:panelWindow>
+            </af:popup>
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p2"
+                      binding="#{viewScope.ERPMainClassBean.ERPUserIdPopup}">
+                <af:panelWindow id="pw2" title="Enter User ID" modal="true" partialTriggers="l3">
+                    <af:panelGroupLayout id="pgl24" halign="center" styleClass="AFStretchWidth" layout="horizontal">
+                        <af:inputText id="it4" placeholder="Type Here" styleClass="InputTextPlace" columns="30"
+                                      showRequired="false" value="#{viewScope.ERPMainClassBean.ERPVerifyUserId}"/>
+                        <af:spacer width="10" height="10" id="s19"/>
+                        <af:button text="Next" id="b2" styleClass="ErpStandardButton"
+                                   icon="#{resource['images:imgNext.png']}" iconPosition="trailing"
+                                   action="#{viewScope.ERPMainClassBean.ERPdoHideUseridPopup}"/>
+                    </af:panelGroupLayout>
+                </af:panelWindow>
+            </af:popup>
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p3"
+                      binding="#{viewScope.ERPMainClassBean.ERPRecoveryMethodPopup}">
+                <af:panelWindow id="pw3" modal="true" title="Get Verification Code Via">
+                    <af:panelGroupLayout id="pgl25" layout="horizontal" halign="center">
+                        <af:link id="l4" icon="#{resource['images:imgRecoveryViaEmail.png']}"
+                                 iconPosition="top" styleClass="RecoveryMethod" partialSubmit="true"
+                                 action="#{viewScope.ERPMainClassBean.ERPdoHideRecoveryPopup}"
+                                 visible="#{(viewScope.ERPMainClassBean.erpValueType=='E' &amp;&amp; viewScope.ERPMainClassBean.erpRecoverUserPassword=='U') || viewScope.ERPMainClassBean.erpRecoverUserPassword=='P'}">
+                            <af:outputText value="Send Email" id="ot16"/>
+                            <af:setActionListener from="#{'Enter Verification Code Sent Via Email'}"
+                                                  to="#{viewScope.ERPMainClassBean.ERPStringRecoverVia}"/>
+                            <af:setActionListener from="#{'ERPEMAIL'}"
+                                                  to="#{viewScope.ERPMainClassBean.ERPRecoveryType}"/>
+                            <af:clientListener method="warnAndPreventUserInput" type="action"/>
+                        </af:link>
+                        <af:spacer width="10" height="10" id="s20"/>
+                        <af:link id="l5" icon="#{resource['images:imgRecoveryViaSMS.png']}" iconPosition="top"
+                                 partialSubmit="true" styleClass="RecoveryMethod"
+                                 action="#{viewScope.ERPMainClassBean.ERPdoHideRecoveryPopup}"
+                                 visible="#{(viewScope.ERPMainClassBean.erpValueType=='M' &amp;&amp; viewScope.ERPMainClassBean.erpRecoverUserPassword=='U') || viewScope.ERPMainClassBean.erpRecoverUserPassword=='P'}">
+                            <af:outputText value="Send SMS" id="ot17"/>
+                            <af:setActionListener from="#{'ERPSMS'}"
+                                                  to="#{viewScope.ERPMainClassBean.ERPRecoveryType}"/>
+                            <af:setActionListener to="#{viewScope.ERPMainClassBean.ERPStringRecoverVia}"
+                                                  from="#{'Enter Verification Code Sent Via SMS'}"/>
+                        </af:link>
+                    </af:panelGroupLayout>
+                </af:panelWindow>
+            </af:popup>
+            <af:decorativeBox id="db1" dimensionsFrom="children">
+                <f:facet name="center">
+                    <af:panelGridLayout id="pgl6">
+                        <af:gridRow marginTop="5px" height="350px" id="gr15">
+                            <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc16" halign="stretch"
+                                         valign="stretch">
+                                <af:image source="#{resource['images:imgTopHeader.png']}" id="i5"/>
+                            </af:gridCell>
+                        </af:gridRow>
+                        <af:gridRow marginTop="5px" height="auto" id="gr16">
+                            <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc112" halign="stretch"
+                                         valign="stretch" inlineStyle="margin-top:-8px;">
+                                <af:panelGroupLayout id="pgl112" layout="vertical" halign="center"
+                                                     styleClass="AFStretchWidth" valign="top"
+                                                     inlineStyle="margin-top:-60px;">
+                                    <af:panelFormLayout id="pfl1" maxColumns="1" rows="1">
+                                        <f:facet name="footer"/>
+                                        <af:inputText label="Label 1" id="it11" simple="true" columns="40"
+                                                      styleClass="InputTextPlace" placeholder="User Name"
+                                                      value="#{viewScope.ERPMainClassBean.ERPuserCode}"
+                                                      contentStyle="text-transform:upperCase"/>
+                                        <af:inputText label="Label 2" id="it12" simple="true" columns="40" rows="1"
+                                                      placeholder="Password" styleClass="InputTextPlace"
+                                                      contentStyle="margin-top:10px;margin-bottom:10px"
+                                                      value="#{viewScope.ERPMainClassBean.ERPuserPassword}"
+                                                      secret="true"/>
+                                        <af:link text="Can't access your account?" id="l11" partialSubmit="true">
+                                            <af:showPopupBehavior popupId="p1" triggerType="action"/>
+                                        </af:link>
+                                        <af:spacer width="1" height="1" id="s15"/>
+                                        <af:button text="Sign In" id="b11" styleClass="ErpSigninButton"
+                                                   action="#{viewScope.ERPMainClassBean.doLoginERPOracle}"/>
+                                    </af:panelFormLayout>
+                                </af:panelGroupLayout>
+                            </af:gridCell>
+                        </af:gridRow>
+                        <af:gridRow marginTop="5px" height="150px" marginBottom="5px" id="gr17">
+                            <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc113" halign="stretch"
+                                         valign="stretch">
+                                <af:panelGroupLayout id="pgl113" layout="horizontal" halign="end">
+                                    <af:image id="i12" source="#{resource['images:imgOracleLogo.png']}"
+                                              inlineStyle="margin-right:30px"/>
+                                </af:panelGroupLayout>
+                                <af:separator id="s111" inlineStyle="margin-right:30px;margin-left:30px"/>
+                            </af:gridCell>
+                        </af:gridRow>
+                    </af:panelGridLayout>
+                </f:facet>
+            </af:decorativeBox>
+            <af:panelGridLayout id="pgl1" dimensionsFrom="parent" styleClass="OracleERPLoginCenter" rendered="false">
+                <af:gridRow marginTop="5px" id="gr1" height="10em">
+                    <af:gridCell width="100%" id="gc1" columnSpan="2" styleClass="OracleERPLoginTop" rowSpan="1"
+                                 halign="stretch" valign="stretch">
+                        <af:panelSplitter id="ps1" dimensionsFrom="parent" splitterPosition="350" disabled="true">
+                            <f:facet name="first">
+                                <af:image id="i4"
+                                          styleClass="OracleLoginScreenImgWidth"
+                                          source="#{resource['images:imgOracleCloudERP.png']}"/>
+                            </f:facet>
+                            <f:facet name="second">
+                                <af:spacer width="10" height="10" id="s13"/>
+                            </f:facet>
+                        </af:panelSplitter>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow marginTop="20px" id="gr2" height="1em">
+                    <af:gridCell marginStart="5px" width="30%" id="gc3" valign="stretch" halign="stretch">
+                        <af:panelGroupLayout id="pgl5" layout="horizontal">
+                            <af:spacer width="50" height="10" id="s7"/>
+                            <af:outputText value="Welcome" id="ot1"/>
+                            <af:outputText value="|" id="ot4"/>
+                            <af:outputText value="Login to get started" id="ot5"/>
+                            <f:facet name="separator">
+                                <af:spacer width="10" height="10" id="s1"/>
+                            </f:facet>
+                        </af:panelGroupLayout>
+                    </af:gridCell>
+                    <af:gridCell marginStart="5px" width="70%" marginEnd="5px" id="gc2" rowSpan="5" columnSpan="1"
+                                 halign="stretch" valign="stretch">
+                        <af:panelGridLayout id="pgl2" dimensionsFrom="parent" styleClass="AFStretchWidth">
+                            <af:gridRow marginTop="5px" height="100%" id="gr7">
+                                <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc6" halign="stretch"/>
+                            </af:gridRow>
+                            <af:gridRow marginTop="5px" height="100%" id="gr8">
+                                <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc7" halign="stretch"
+                                             valign="stretch">
+                                    <af:panelGroupLayout id="pgl3" halign="center" layout="vertical">
+                                        <af:outputText value="Multiples Problems" id="ot2"
+                                                       inlineStyle="font-size:x-large;color:white"/>
+                                    </af:panelGroupLayout>
+                                </af:gridCell>
+                            </af:gridRow>
+                            <af:gridRow marginTop="5px" height="100%" id="gr9">
+                                <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc9" halign="stretch"
+                                             valign="stretch">
+                                    <af:panelGroupLayout id="pgl4" layout="vertical" halign="center">
+                                        <af:outputText value="Unique Solutions" id="ot3"
+                                                       inlineStyle="font-size:x-large;color:white"/>
+                                    </af:panelGroupLayout>
+                                </af:gridCell>
+                            </af:gridRow>
+                            <af:gridRow marginTop="5px" height="100%" id="gr10">
+                                <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc11" halign="center">
+                                    <af:panelGroupLayout id="pgl14" layout="vertical" halign="center">
+                                        <af:outputText value="Your business processess and requirements are unique for your business."
+                                                       id="ot7"/>
+                                        <af:spacer width="10" height="10" id="s9"/>
+                                        <af:outputText value="Choosing an ERP system is a chance to critically look at your business processes and to see if they can be made more efficient" id="ot8"/>
+                                    </af:panelGroupLayout>
+                                </af:gridCell>
+                            </af:gridRow>
+                            <af:gridRow marginTop="5px" height="100%" marginBottom="5px" id="gr11">
+                                <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc12" halign="stretch"/>
+                            </af:gridRow>
+                        </af:panelGridLayout>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow id="gr3" height="5em">
+                    <af:gridCell marginStart="5px" width="30%" id="gc5" halign="stretch" valign="middle">
+                        <af:panelGroupLayout id="pgl9" layout="horizontal">
+                            <af:inputText
+                                          label="#{bindings.UserCode.hints.label}"
+                                          required="#{bindings.UserCode.hints.mandatory}"
+                                          columns="#{bindings.UserCode.hints.displayWidth}"
+                                          maximumLength="#{bindings.UserCode.hints.precision}"
+                                          shortDesc="#{bindings.UserCode.hints.tooltip}" id="it3" rendered="false">
+                                <f:validator binding="#{bindings.UserCode.validator}"/>
+                            </af:inputText>
+                            <af:spacer width="50" height="10" id="s3"/>
+                            <af:inputText label="Label 1" id="it1" simple="true" styleClass="OracleERPLoginTextHeight" placeholder="User Name"
+                                          contentStyle="text-transform:uppercase" clientComponent="true"/>
+                        </af:panelGroupLayout>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow marginTop="5px" id="gr4" height="3em">
+                    <af:gridCell marginStart="5px" width="30%" marginEnd="5px" id="gc8">
+                        <af:panelGroupLayout id="pgl10" layout="horizontal">
+                            <af:spacer width="50" height="10" id="s4"/>
+                            <af:inputText label="Label 2" id="it2" simple="true" styleClass="OracleERPLoginTextHeight"
+                                          placeholder="PASSWORD" secret="true"/>
+                        </af:panelGroupLayout>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow marginTop="20px" marginBottom="5px" id="gr5" height="3em">
+                    <af:gridCell marginStart="5px" width="30%" marginEnd="5px" id="gc10">
+                        <af:panelGroupLayout id="pgl11" layout="horizontal">
+                            <af:spacer width="50" height="10" id="s5"/>
+                            <af:selectBooleanCheckbox text="Remember me next time." label="Label 1" id="sbc1"
+                                                      simple="true"/>
+                        </af:panelGroupLayout>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow id="gr6" height="5em">
+                    <af:gridCell id="gc4" width="30%">
+                        <af:panelGroupLayout id="pgl12" layout="horizontal">
+                            <af:spacer width="50" height="10" id="s6"/>
+                            <af:button text="Sign InN" id="b1" styleClass="OracleERPLoginButton"
+                                       action="#{viewScope.ERPMainClassBean.doLoginERPOracle}"
+                                       windowEmbedStyle="inlineDocument"/>
+                        </af:panelGroupLayout>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow id="gr12" height="3em">
+                    <af:gridCell id="gc13">
+                        <af:panelGroupLayout id="pgl13" layout="horizontal">
+                            <af:spacer width="50" height="10" id="s8"/>
+                            <af:link text="Forget your password?" id="l1"/>
+                        </af:panelGroupLayout>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow id="gr13" height="100%">
+                    <af:gridCell id="gc14" valign="stretch" halign="stretch" columnSpan="2" marginStart="5px"
+                                 marginEnd="5px">
+                        <af:panelGroupLayout id="pgl7" valign="middle"
+                                             layout="vertical" styleClass="OracleERPLoginBottom">
+                            <af:spacer width="10" height="60" id="s12"/>
+                            <af:panelGroupLayout id="pgl16" layout="horizontal" halign="center">
+                                <af:panelGroupLayout id="pgl15" layout="vertical" halign="center">
+                                    <af:image source="#{resource['images:imgWebExpertise.png']}" id="i1"
+                                              styleClass="OracleLoginScreenImgWidth"/>
+                                    <af:outputText value="Web Designing" id="ot9" truncateAt="0"
+                                                   inlineStyle="color:white"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl17" layout="vertical" halign="center">
+                                    <af:image source="#{resource['images:imgSearchEngineExpertise.png']}" id="i2"
+                                              styleClass="OracleLoginScreenImgWidth"/>
+                                    <af:outputText value="Search Engine" id="ot10" truncateAt="0"
+                                                   inlineStyle="color:white"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl18" layout="vertical" halign="center">
+                                    <af:activeImage source="#{resource['images:imgPMPExpertise.png']}" id="ai1"
+                                                    styleClass="OracleLoginScreenImgWidth"/>
+                                    <af:spacer width="10" height="10" id="s11"/>
+                                    <af:outputText value="ERP" id="ot11" inlineStyle="color:white"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl19" layout="vertical" halign="center">
+                                    <af:activeImage source="#{resource['images:imgTrainingExpertise.png']}" id="ai2"
+                                                    styleClass="OracleLoginScreenImgWidth"/>
+                                    <af:outputText value="Training" id="ot12" inlineStyle="color:white"/>
+                                </af:panelGroupLayout>
+                                <af:panelGroupLayout id="pgl20" layout="vertical" halign="center">
+                                    <af:image source="#{resource['images:imgSoftwareExpertise.png']}" id="i3"/>
+                                    <af:outputText value="Project Management" id="ot13" inlineStyle="color:white"/>
+                                </af:panelGroupLayout>
+                                <f:facet name="separator">
+                                    <af:spacer width="80" height="10" id="s10"/>
+                                </f:facet>
+                            </af:panelGroupLayout>
+                            <f:facet name="separator"/>
+                        </af:panelGroupLayout>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow id="gr14" height="4%">
+                    <af:gridCell id="gc15" halign="stretch" columnSpan="2" valign="bottom">
+                        <af:panelGroupLayout id="pgl8" layout="vertical" halign="center"
+                                             styleClass="OracleERPLoginBottom">
+                            <af:separator id="s2"/>
+                            <af:outputText value="Oracle Corporation. All rights reserved." id="ot6"
+                                           inlineStyle="color:white"/>
+                        </af:panelGroupLayout>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+        </af:form>
+        <f:facet name="metaContainer"/>
+    </af:document>
+</f:view>

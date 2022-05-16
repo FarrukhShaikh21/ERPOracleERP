@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:h="http://java.sun.com/jsf/html">
+    <af:document title="ERPMain.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:pageTemplate viewId="/ERPTemplate.jsf" value="#{bindings.ptb1}" id="pt1">
+                <f:facet name="ERPMain">
+                    <af:panelGridLayout id="pgl1">
+                        <af:gridRow marginTop="5px" height="auto" id="gr1">
+                            <af:gridCell marginStart="5px" width="33%" id="gc1" valign="stretch" halign="stretch"
+                                         marginEnd="5px">
+                                <af:inputText label="Label 1" id="it1"
+                                              value="#{pageFlowScope.ERPMainClassBean.ERPuserCode}" rendered="false"/>
+                                <af:panelBox text="Administration" id="pb2" showDisclosure="false" background="dark">
+                                    <f:facet name="toolbar"/>
+                                    <h:commandLink value="" id="cl1" action="ERPACTADMINISTRATION">
+                                        <af:image id="i1" source="#{resource['images:imgAdministration.png']}"/>
+                                        <af:setActionListener to="#{pageFlowScope.ERPMainTempBean.LERPModuleFromMenu}"
+                                                              from="#{'SEC'}"/>
+                                    </h:commandLink>
+                                </af:panelBox>
+                            </af:gridCell>
+                            <af:gridCell marginStart="5px" width="33%" id="gc2" halign="stretch" valign="stretch">
+                                <af:panelBox text="Financial Management" id="pb1" showDisclosure="false"
+                                             background="dark">
+                                    <f:facet name="toolbar"/>
+                                    <h:commandLink value="" id="cl2" action="ERPACTFINANCIAL">
+                                        <af:image source="#{resource['images:imgFinancial.png']}" id="i2"/>
+                                        <af:setActionListener to="#{pageFlowScope.ERPMainTempBean.LERPModuleFromMenu}"
+                                                              from="#{'FMS'}"/>
+                                    </h:commandLink>
+                                </af:panelBox>
+                            </af:gridCell>
+                            <af:gridCell marginStart="5px" width="34%" id="gc3" marginEnd="5px" valign="stretch"
+                                         halign="stretch">
+                                <af:panelBox text="Supply Chain Management" id="pb3" showDisclosure="false"
+                                             background="medium">
+                                    <f:facet name="toolbar"/>
+                                    <h:commandLink value="" id="cl3" action="ERPACTSUPPLYCHAIN">
+                                        <af:image source="#{resource['images:imgSupplyChainSystem.png']}" id="i3"/>
+                                        <af:setActionListener to="#{pageFlowScope.ERPMainTempBean.LERPModuleFromMenu}"
+                                                              from="#{'SCM'}"/>
+                                    </h:commandLink>
+                                </af:panelBox>
+                            </af:gridCell>
+                        </af:gridRow>
+                        <af:gridRow marginTop="5px" height="auto" id="gr2">
+                            <af:gridCell marginStart="5px" width="33%" id="gc6" halign="stretch" valign="stretch">
+                                <af:panelBox text="Inventory Management" id="pb4" showDisclosure="false"
+                                             background="medium">
+                                    <f:facet name="toolbar"/>
+                                    <h:commandLink value="" id="cl4">
+                                        <af:image source="#{resource['images:imgInventorySystem.png']}" id="i4"/>
+                                        <af:setActionListener to="#{pageFlowScope.ERPMainTempBean.LERPModuleFromMenu}"
+                                                              from="#{'INV'}"/>
+                                    </h:commandLink>
+                                </af:panelBox>
+                            </af:gridCell>
+                            <af:gridCell marginStart="5px" width="33%" id="gc7"/>
+                            <af:gridCell marginStart="5px" width="34%" id="gc8"/>
+                        </af:gridRow>
+                    </af:panelGridLayout>
+                </f:facet>
+                <f:facet name="ERPLeft"/>
+                <f:facet name="ERPToolbar"/>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>

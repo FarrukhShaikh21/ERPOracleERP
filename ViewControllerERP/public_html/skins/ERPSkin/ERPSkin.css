@@ -1,0 +1,566 @@
+@charset "UTF-8";
+/**ADFFaces_Skin_File / DO NOT REMOVE**/
+@namespace af "http://xmlns.oracle.com/adf/faces/rich";
+@namespace dvt "http://xmlns.oracle.com/dss/adf/faces";
+
+
+.InputTextPlace af|inputText::content{
+  font-style: italic;
+  font-weight:bold; 
+  
+}
+
+af|button.ErpSigninButton::link {
+    background-color: #0576d4;
+    height: 30px;
+    width: 50px;
+    color: White;
+}
+af|button.ErpSigninButton::text {
+    padding-top: 10px;
+}
+
+ af|button.ErpSigninButton::text {
+    background-color: #0576d4;
+     font-family: Arial;
+}
+
+
+ af|button.ErpSigninButton {
+        font-weight: normal; 
+    border: 0px; 
+    text-shadow: 0px 0px 0px #FFFFFF; 
+    letter-spacing: 1.0px;
+    font-family: Arial;
+    text-align: center;
+    }
+    
+.ERPTemplateHeader
+{
+background-color:#ecf1cd;
+}
+
+.ERPMenuBarCurve af|menu::bar-item-icon-style
+{
+width: 30px;
+height: 30px;
+padding-top: 0px;
+padding-bottom: 0px;
+border-bottom-left-radius: 20px;
+border-bottom-right-radius: 20px;
+border-top-left-radius: 20px;
+border-top-right-radius: 20px;
+}
+
+.ERPMenuBarCurve af|menu::bar-item-text
+{
+font-weight: bold;    
+}
+
+.ERPLoginUserImageCurve
+{
+     border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    width:40px;
+    height:40px;
+}
+
+
+
+
+.OracleERPLoginTop
+{
+  background-image: none;
+  background-color:   #6493AF;
+  
+}
+af|inputText::content{
+    font-family:sans-serif;
+  font-size: 12px;
+  
+}
+.OracleERPLoginBottom
+{
+  background-image: none;
+  background-color: #6493AF;
+  vertical-align: middle;
+  
+}
+
+.OracleERPLoginCenter
+{
+  background-image: none;
+  background-color: #B0C3C9;
+  
+}
+
+.OracleERPLoginTextHeight af|inputText::content
+{
+  background-image: none;
+  background-color: White;
+  height: 40px;
+  width: 250px;
+  font-family:sans-serif;
+  font-size: 14px;
+  
+}
+
+.OracleERPLoginButton af|button::link
+{
+  background-image: none;
+  background-color: #477086;
+  height: 30px;
+  width: 233px;
+  border: White none thin;
+  font-size: small;
+  font-stretch: semi-expanded;
+  font-style: normal;
+  font-family:sans-serif;
+  text-align: center;
+  color: White;
+    border-top: 3px solid #E2CB9B;  
+    border-right: 3px solid #E2CB9B;  
+    border-bottom: 3px solid #D4BB87;  
+    border-left: 3px solid #E2CB9B;  
+  border: Aqua  none thin ;
+  vertical-align: middle;
+  
+}
+.OracleERPLoginButton af|button::link:active
+{
+  background-image: none;
+  background-color: #c5c3df;
+border: White none thin;
+  height: 30px;
+  width: 233px;
+  font-size: small;
+  font-stretch: semi-expanded;
+  font-style: normal;
+  font-family:sans-serif;
+  text-align: center;
+  color: #6493AF;
+  vertical-align: middle;
+}
+
+.OracleLoginScreenImgWidth
+{
+  height: 60px;
+}
+
+.WBDisplayBlock {
+    display: inline-block;
+}
+
+
+af|listItem.WBDisplayBlock {
+    background-color: transparent; 
+    border-bottom: 0px solid transparent; 
+}
+
+
+
+af|listItem.WBDisplayBlockPadding  {
+    padding: 15px;
+}
+
+
+WBDisplayBlockCenterUndo {
+text-align: left;
+}
+
+af|listItem.WBListPadding  {
+    padding: 5px 10px 0px 10px;
+}
+
+.WBCardSize{
+    width: 260px;
+    height: 220px
+}   
+
+.WBImageCard {
+    width: 54px;
+    height: 54px;
+}
+
+.WBImageCardBorder {
+    border-radius: 48px;
+    border: 1px solid -tr-property-ref(".AFPanelBorderColor:alias", "color");
+}
+
+/*current selected row color*/
+af|table::data-row:selected:inactive af|column::data-cell, 
+af|column::data-cell:selected, 
+af|table::data-row:selected:busy, 
+af|column::data-cell:focus, 
+af|table::data-row:selected:focused 
+af|column::banded-data-cell, 
+af|table::data-row:selected:focused 
+af|column::data-cell, 
+af|table::data-row:selected af|column::data-cell 
+{    background-color:  #c7e4de;
+}
+
+af|decorativeBox::frame{
+    border:none  ;
+}
+
+.ErpDeleteConfirmText
+{
+font-size:large;
+font-weight:bold;
+color:red;    
+}
+
+af|link.ERPLink {
+    display: inline-block;
+    background: white;
+    cursor: pointer;
+    font-size: 13px;
+    text-decoration: none;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+
+af|link.ERPLink:hover,
+ af|link.ERPLink:active,
+ af|link.ERPLink:active:hover,
+ af|link.ERPLink:focus:hover,
+ af|link.ERPLink:focus:hover:active {
+    display: inline-block;
+    padding: 10px 10px;
+    background: #ebf5fc;
+    cursor: pointer;
+    color: #fff;
+    font-size: 13px;
+    text-decoration: none;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+
+.ERPHeroBackground
+{
+ background-color:#83cdde;   
+}
+
+
+
+.ERPHeroDetailColorChoice af|selectOneChoice::content
+{
+    font-weight:bold;
+    color:#83cdde
+}
+.ERPLabel
+{
+    color:gray
+}
+
+af|inputListOfValues{
+             -tr-stretch-search-dialog: true;
+           }
+           
+af|inputComboboxListOfValues{
+             -tr-stretch-search-dialog: true;
+           }
+
+
+
+
+
+
+.WBDisplayBlock {
+    display: inline-block;
+}
+
+af|listItem.WBDisplayBlock {
+    background-color: transparent; 
+    border-bottom: 0px solid transparent; 
+}
+
+
+
+af|listItem.WBDisplayBlockPadding  {
+    padding: 15px;
+}
+
+
+WBDisplayBlockCenterUndo {
+text-align: left;
+}
+
+af|listItem.WBListPadding  {
+    padding: 5px 10px 0px 10px;
+}
+
+.WBCardSize{
+    width: 240px;
+    height: 220px
+}   
+
+.WBImageCard {
+    width: 54px;
+    height: 54px;
+}
+
+.WBImageCardBorder {
+    border-radius: 48px;
+    border: 1px solid -tr-property-ref(".AFPanelBorderColor:alias", "color");
+}
+
+af|decorativeBox::frame{
+    border:none  ;
+}
+
+.ErpDeleteConfirmText
+{
+font-size:large;
+font-weight:bold;
+color:red;    
+}
+
+af|link.ERPLink {
+    display: inline-block;
+    background-color:#fcf7e8;
+    cursor: pointer;
+    font-size: 13px;
+    text-decoration: none;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+
+af|link.ERPLink:hover,
+ af|link.ERPLink:active,
+ af|link.ERPLink:active:hover,
+ af|link.ERPLink:focus:hover,
+ af|link.ERPLink:focus:hover:active {
+    display: inline-block;
+    padding: 10px 10px;
+    background: #ebf5fc;
+    cursor: pointer;
+    color: #fff;
+    font-size: 13px;
+    text-decoration: none;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+
+
+.ERPHeroBannerFont {
+    font-size:14px;
+    color:DarkBlue;
+    font-weight: bolder;
+    font-family: sans-serif; 
+}
+
+.ERPHeroBackground
+{
+background-color:#fcf7e8;
+
+}
+
+.ERPHeroDetailColor
+{
+    font-weight:bold;
+    /*color:#83cdde*/
+    color:Black;
+}
+
+
+.ERPHeroDetailColorChoice af|selectOneChoice::content
+{
+    font-weight:bold;
+    /*color:#83cdde*/
+    color:Black;
+}
+.ERPLabel
+{
+    color:gray
+}
+af|inputFile::content
+{
+    color: White;
+}
+
+.ERPAboutPage af|decorativeBox::center
+{
+    padding-top: 0px;
+    background-image: none;
+    background-color: #4a85c5;
+}
+
+.ERPAboutImage
+{
+width: 130px;
+height: 130px;
+padding-top: 0px;
+padding-bottom: 0px;
+border-bottom-left-radius: 50px;
+border-bottom-right-radius: 50px;
+border-top-left-radius: 50px;
+border-top-right-radius: 50px;
+}
+
+.ERPAboutUserNameFont
+{
+font-size:20px;
+color:white;
+font-weight: bolder;
+font-family: sans-serif;
+}
+
+.ERPAboutOtherInfoFont
+{
+font-size:12px;
+color:black;
+font-weight: bolder;
+font-family: sans-serif;
+color:#4a85c5;
+}
+
+.ERPAboutOtherInfoLabel
+{
+font-family: sans-serif;
+font-weight: bolder;
+color: #e4e3ff;
+}
+
+af|quickQuery af|inputText::content{
+   font-weight: bold;
+   color:blue;
+   width: 100px;
+   }
+
+
+
+
+
+af|button.ErpStandardButton::link {
+    background-color: #0576d4;
+    height: 30px;
+    width: 50px;
+    color: White;
+}
+af|button.ErpStandardButton::text {
+    padding-top: 10px;
+}
+
+ af|button.ErpStandardButton::text {
+    background-color: #0576d4;
+     font-family: Arial;
+}
+
+
+ af|button.ErpStandardButton {
+    font-weight: normal; 
+    border: 0px; 
+    text-shadow: 0px 0px 0px #FFFFFF; 
+    letter-spacing: 1.0px;
+    font-family: Arial;
+    text-align: center;
+    }
+    
+    
+    af|link.RecoveryMethod {
+    display: inline-block;
+    background: #ebf5fc;
+    cursor: pointer;
+    font-size: 13px;
+    text-decoration: none;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+af|link.RecoveryMethod:hover,
+ af|link.RecoveryMethod:active,
+ af|link.RecoveryMethod:active:hover,
+ af|link.RecoveryMethod:focus:hover,
+ af|link.RecoveryMethod:focus:hover:active {
+    display: inline-block;
+    padding: 5px 5px;
+    background: #ebf5fc;
+    cursor: pointer;
+    color: Silver;
+    font-size: 13px;
+    text-decoration: none;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+
+.ERPToolBarBackground
+{
+    background:#e6f7fc
+}
+.ERPCompanyInfoBackGround
+{
+    background:#edfcf9
+}
+
+/*
+af|panelCollection div[id$='_dchTbr'] {
+    display: none;
+}
+af|panelCollection div[id$='pc1:_vw'] {
+    display: none;
+}
+af|panelCollection div[id$='pc1:_tbr'] {
+    display: none;
+}*/
+/*
+af|panelCollection div[id$='pc1::_ahTp'] {
+    display: none;
+}
+*/
+
+.ERPEntryAreaHeading{
+    background:#309fdb;
+}
+
+.ERPEntryAreaFont{
+    font-size:large;
+    color:white;font-weight:bold
+}
+
+
+af|toolbox::leading-cell:ltr{
+  border: none Black thick;
+}
+
+af|panelCollection af|menuBar,af|commandToolbarButton::link {
+  display:none
+}
+.ERPActivityNameFormHeading
+{
+    font-weight:bold
+}
+
+af|inputText::content:focus, 
+af|inputDate::content:focus,
+af|selectOneChoice::content:focus,
+af|inputComboboxListOfValues::content:focus{
+    color:#309fdb;
+    background-color: #fffdd6;
+}

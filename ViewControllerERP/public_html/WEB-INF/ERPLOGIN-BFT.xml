@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="ERPLOGINBFT">
+    <default-activity>ERPDoHideMenu</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__2">
+      <name>P_ADF_USER_SNO</name>
+      <value>#{pageFlowScope.ERPMainClassBean.ERPuserId}</value>
+      <class>oerp.viewerp.ERPMainClass</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__3">
+      <name>P_ADF_USER_CODE</name>
+      <value>#{pageFlowScope.ERPMainClassBean.ERPuserCode}</value>
+      <class>oerp.viewerp.ERPMainClass</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__13">
+      <name>P_ADF_PWD_EXPIRE</name>
+      <value>#{pageFlowScope.ERPMainClassBean.ERPIsPwdExpired}</value>
+      <class>oerp.viewerp.ERPMainClass</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__12">
+      <name>P_ADF_GLOBAL_DEF_COMPANY</name>
+      <value>#{pageFlowScope.ERPMainClassBean.ERPGlobalDefaultComp}</value>
+      <class>oerp.viewerp.ERPMainClass</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__15">
+      <name>P_ADF_USER_ATTRIBUTE</name>
+      <value>#{pageFlowScope.ERPMainClassBean.ERPUserAttributes}</value>
+      <class>oerp.viewerp.ERPMainClass</class>
+    </input-parameter-definition>
+    <managed-bean id="__1">
+      <managed-bean-name>ERPMainClassBean</managed-bean-name>
+      <managed-bean-class>oerp.viewerp.ERPMainClass</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__33">
+      <managed-bean-name>ERPMainTempBean</managed-bean-name>
+      <managed-bean-class>erptemplate.viewtemp.ERPTEMPClass</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="ERPMain">
+      <page>/ERPMain.jsf</page>
+    </view>
+    <task-flow-return id="ERPOracleReturnActivity">
+      <outcome>
+        <name>ERPOracleReturnActivity</name>
+      </outcome>
+    </task-flow-return>
+    <router id="ERPDecideMainChaPwd">
+      <case id="__8">
+        <expression>#{pageFlowScope.ERPMainClassBean.ERPIsPwdExpired=='ERPNO'}</expression>
+        <outcome>ERP-ACT-GOTO-Main</outcome>
+      </case>
+      <case id="__14">
+        <expression>#{pageFlowScope.ERPMainClassBean.ERPIsPwdExpired=='ERPYES'}</expression>
+        <outcome>ERP-ACT-CH-PWD</outcome>
+      </case>
+      <default-outcome>ERP-ACT-CH-PWD</default-outcome>
+    </router>
+    <task-flow-call id="ERPBTFADM">
+      <task-flow-reference>
+        <document>/WEB-INF/ERPBTFADM.xml</document>
+        <id>ERPBTFADM</id>
+      </task-flow-reference>
+      <input-parameter id="__23">
+        <name>P_ADF_USER_CODE</name>
+        <value>#{pageFlowScope.ERPMainClassBean.ERPuserCode}</value>
+      </input-parameter>
+      <input-parameter id="__24">
+        <name>P_ADF_USER_SNO</name>
+        <value>#{pageFlowScope.ERPMainClassBean.ERPuserId}</value>
+      </input-parameter>
+      <input-parameter id="__25">
+        <name>P_ADF_USER_ATTRIBUTE</name>
+        <value>#{pageFlowScope.ERPMainClassBean.ERPUserAttributes}</value>
+      </input-parameter>
+      <input-parameter id="__72">
+        <name>P_ADF_MODULE_RIGHTS</name>
+        <value>#{pageFlowScope.ERPMainTempBean.LERPModuleActionRights}</value>
+      </input-parameter>
+      <return-value id="__65">
+        <name>P_ADF_GOTO_MODULE_FROM_GS</name>
+        <value>#{pageFlowScope.ERPMainTempBean.LERPModuleFromGlobalSearch}</value>
+      </return-value>
+      <return-value id="__68">
+        <name>P_ADF_MODULE_RIGHTS_GS</name>
+        <value>#{pageFlowScope.ERPMainTempBean.LERPModuleActionRights}</value>
+      </return-value>
+    </task-flow-call>
+    <method-call id="doSetERPGlobals">
+      <method>#{pageFlowScope.ERPMainClassBean.doSetERPApplicationGlobals}</method>
+      <outcome>
+        <fixed-outcome>doSetERPGlobals</fixed-outcome>
+      </outcome>
+    </method-call>
+    <task-flow-call id="ERPCHPWDBTF">
+      <task-flow-reference>
+        <document>/WEB-INF/ERPCHPWDBTF.xml</document>
+        <id>ERPCHPWDBTF</id>
+      </task-flow-reference>
+      <input-parameter id="__10">
+        <name>P_ADF_USER_ID</name>
+        <value>#{pageFlowScope.P_ADF_USER_SNO}</value>
+      </input-parameter>
+      <input-parameter id="__11">
+        <name>P_ADF_USER_CODE</name>
+        <value>#{pageFlowScope.P_ADF_USER_CODE}</value>
+      </input-parameter>
+      <input-parameter id="__22">
+        <name>P_ADF_USER_ATTRIBUTE</name>
+        <value>#{pageFlowScope.ERPMainClassBean.ERPUserAttributes}</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="ERPBTFFMS">
+      <task-flow-reference>
+        <document>/WEB-INF/ERPBTFFMS.xml</document>
+        <id>ERPBTFFMS</id>
+      </task-flow-reference>
+      <input-parameter id="__29">
+        <name>P_ADF_USER_SNO</name>
+        <value>#{pageFlowScope.ERPMainClassBean.ERPuserId}</value>
+      </input-parameter>
+      <input-parameter id="__30">
+        <name>P_ADF_USER_CODE</name>
+        <value>#{pageFlowScope.ERPMainClassBean.ERPuserCode}</value>
+      </input-parameter>
+      <input-parameter id="__31">
+        <name>P_ADF_USER_ATTRIBUTE</name>
+        <value>#{pageFlowScope.ERPMainClassBean.ERPUserAttributes}</value>
+      </input-parameter>
+      <input-parameter id="__70">
+        <name>P_ADF_MODULE_RIGHTS</name>
+        <value>#{pageFlowScope.ERPMainTempBean.LERPModuleActionRights}</value>
+      </input-parameter>
+      <return-value id="__73">
+        <name>P_ADF_GOTO_MODULE_FROM_GS</name>
+        <value>#{pageFlowScope.ERPMainTempBean.LERPModuleFromGlobalSearch}</value>
+      </return-value>
+      <return-value id="__74">
+        <name>P_ADF_MODULE_RIGHTS_GS</name>
+        <value>#{pageFlowScope.ERPMainTempBean.LERPModuleActionRights}</value>
+      </return-value>
+    </task-flow-call>
+    <method-call id="ERPSetMainGlobals">
+      <method>#{pageFlowScope.ERPMainClassBean.doSetMainErpApplicationGlobals}</method>
+      <outcome>
+        <fixed-outcome>ERP-ACT-DO-DECIDE-ACIVITY</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="ERPDoHideMenu">
+      <method>#{pageFlowScope.ERPMainTempBean.doERPHideMenu}</method>
+      <outcome>
+        <fixed-outcome>ACT-ERP-SET-GLOBAL</fixed-outcome>
+      </outcome>
+    </method-call>
+    <task-flow-call id="ERPBTFSCM">
+      <task-flow-reference>
+        <document>/WEB-INF/ERPBTFSCM.xml</document>
+        <id>ERPBTFSCM</id>
+      </task-flow-reference>
+      <input-parameter id="__44">
+        <name>P_ADF_USER_SNO</name>
+        <value>#{pageFlowScope.ERPMainClassBean.ERPuserId}</value>
+      </input-parameter>
+      <input-parameter id="__45">
+        <name>P_ADF_USER_CODE</name>
+        <value>#{pageFlowScope.ERPMainClassBean.ERPuserCode}</value>
+      </input-parameter>
+      <input-parameter id="__46">
+        <name>P_ADF_USER_ATTRIBUTE</name>
+        <value>#{pageFlowScope.ERPMainClassBean.ERPUserAttributes}</value>
+      </input-parameter>
+      <input-parameter id="__69">
+        <name>P_ADF_MODULE_RIGHTS</name>
+        <value>#{pageFlowScope.ERPMainTempBean.LERPModuleActionRights}</value>
+      </input-parameter>
+      <return-value id="__66">
+        <name>P_ADF_GOTO_MODULE_FROM_GS</name>
+        <value>#{pageFlowScope.ERPMainTempBean.LERPModuleFromGlobalSearch}</value>
+      </return-value>
+      <return-value id="__71">
+        <name>P_ADF_MODULE_RIGHTS_GS</name>
+        <value>#{pageFlowScope.ERPMainTempBean.LERPModuleActionRights}</value>
+      </return-value>
+    </task-flow-call>
+    <method-call id="ERPExeUserProfile">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome>
+        <fixed-outcome>ACT-ERP-SET-GLOBAL</fixed-outcome>
+      </outcome>
+    </method-call>
+    <task-flow-call id="ERPCHANGEPWD">
+      <task-flow-reference>
+        <document>/WEB-INF/ERPCHPWDBTF.xml</document>
+        <id>ERPCHPWDBTF</id>
+      </task-flow-reference>
+      <input-parameter id="__53">
+        <name>P_ADF_USER_ID</name>
+        <value>#{pageFlowScope.ERPMainClassBean.ERPuserId}</value>
+      </input-parameter>
+      <input-parameter id="__54">
+        <name>P_ADF_USER_CODE</name>
+        <value>#{pageFlowScope.ERPMainClassBean.ERPuserCode}</value>
+      </input-parameter>
+      <input-parameter id="__55">
+        <name>P_ADF_USER_ATTRIBUTE</name>
+        <value>#{pageFlowScope.ERPMainClassBean.ERPUserAttributes}</value>
+      </input-parameter>
+    </task-flow-call>
+    <router id="ERPGoToModuleFromGlobalSearch">
+      <case id="__59">
+        <expression>#{pageFlowScope.ERPMainTempBean.LERPModuleFromGlobalSearch=='SCM'}</expression>
+        <outcome>ERPGOTOSCMFROMGS</outcome>
+      </case>
+      <case id="__60">
+        <expression>#{pageFlowScope.ERPMainTempBean.LERPModuleFromGlobalSearch=='FMS'}</expression>
+        <outcome>ERPGOTOFMSFROMGS</outcome>
+      </case>
+      <case id="__63">
+        <expression>#{pageFlowScope.ERPMainTempBean.LERPModuleFromGlobalSearch=='SEC'}</expression>
+        <outcome>ERPGOTOADMFROMGS</outcome>
+      </case>
+      <default-outcome>ERPGOTOMAINFROMGS</default-outcome>
+    </router>
+    <control-flow-rule id="__6">
+      <from-activity-id>ERPDecideMainChaPwd</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>ERP-ACT-CH-PWD</from-outcome>
+        <to-activity-id>ERPCHPWDBTF</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__9">
+        <from-outcome>ERP-ACT-GOTO-Main</from-outcome>
+        <to-activity-id>ERPMain</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__16">
+      <from-activity-id>ERPBTFADM</from-activity-id>
+      <control-flow-case id="__19">
+        <from-outcome>ERPADMRETURN</from-outcome>
+        <to-activity-id>ERPMain</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__32">
+        <from-outcome>ERPADMLOGOUT</from-outcome>
+        <to-activity-id>ERPOracleReturnActivity</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__64">
+        <from-outcome>ERPEXITTASKFLOWVIAGS</from-outcome>
+        <to-activity-id>ERPGoToModuleFromGlobalSearch</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__20">
+      <from-activity-id>ERPMain</from-activity-id>
+      <control-flow-case id="__21">
+        <from-outcome>ERPACTADMINISTRATION</from-outcome>
+        <to-activity-id>ERPBTFADM</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__26">
+        <from-outcome>ERPACTFINANCIAL</from-outcome>
+        <to-activity-id>ERPBTFFMS</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__43">
+        <from-outcome>ERPACTSUPPLYCHAIN</from-outcome>
+        <to-activity-id>ERPBTFSCM</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__17">
+      <from-activity-id>doSetERPGlobals</from-activity-id>
+      <control-flow-case id="__18">
+        <from-outcome>doSetERPGlobals</from-outcome>
+        <to-activity-id>ERPMain</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__4">
+      <from-activity-id>ERPCHPWDBTF</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome>ERPACTReturnPWDCHANGE</from-outcome>
+        <to-activity-id>ERPMain</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__27">
+      <from-activity-id>ERPBTFFMS</from-activity-id>
+      <control-flow-case id="__28">
+        <from-outcome>ERPFMSRETURN</from-outcome>
+        <to-activity-id>ERPMain</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__40">
+        <from-outcome>ERPFMSLOGOUT</from-outcome>
+        <to-activity-id>ERPOracleReturnActivity</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__75">
+        <from-outcome>ERPEXITTASKFLOWVIAGS</from-outcome>
+        <to-activity-id>ERPGoToModuleFromGlobalSearch</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__34">
+      <from-activity-id>ERPSetMainGlobals</from-activity-id>
+      <control-flow-case id="__35">
+        <from-outcome>ERP-ACT-DO-DECIDE-ACIVITY</from-outcome>
+        <to-activity-id>ERPDecideMainChaPwd</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__36">
+      <from-activity-id>ERPDoHideMenu</from-activity-id>
+      <control-flow-case id="__37">
+        <from-outcome>ACT-ERP-SET-GLOBAL</from-outcome>
+        <to-activity-id>ERPExeUserProfile</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__38">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__39">
+        <from-outcome>ERPLOGOUTAPP</from-outcome>
+        <to-activity-id>ERPOracleReturnActivity</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__50">
+        <from-outcome>ERPLCHANGEPWD</from-outcome>
+        <to-activity-id>ERPCHANGEPWD</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__41">
+      <from-activity-id>ERPBTFSCM</from-activity-id>
+      <control-flow-case id="__42">
+        <from-outcome>ERPSCMRETURN</from-outcome>
+        <to-activity-id>ERPMain</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__47">
+        <from-outcome>ERPFMSLOGOUT</from-outcome>
+        <to-activity-id>ERPOracleReturnActivity</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__67">
+        <from-outcome>ERPEXITTASKFLOWVIAGS</from-outcome>
+        <to-activity-id>ERPGoToModuleFromGlobalSearch</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__48">
+      <from-activity-id>ERPExeUserProfile</from-activity-id>
+      <control-flow-case id="__49">
+        <from-outcome>ACT-ERP-SET-GLOBAL</from-outcome>
+        <to-activity-id>ERPSetMainGlobals</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__51">
+      <from-activity-id>ERPCHANGEPWD</from-activity-id>
+      <control-flow-case id="__52">
+        <from-outcome>ERPACTReturnPWDCHANGE</from-outcome>
+        <to-activity-id>ERPMain</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__56">
+      <from-activity-id>ERPGoToModuleFromGlobalSearch</from-activity-id>
+      <control-flow-case id="__57">
+        <from-outcome>ERPGOTOSCMFROMGS</from-outcome>
+        <to-activity-id>ERPBTFSCM</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__58">
+        <from-outcome>ERPGOTOMAINFROMGS</from-outcome>
+        <to-activity-id>ERPMain</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__61">
+        <from-outcome>ERPGOTOFMSFROMGS</from-outcome>
+        <to-activity-id>ERPBTFFMS</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__62">
+        <from-outcome>ERPGOTOADMFROMGS</from-outcome>
+        <to-activity-id>ERPBTFADM</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+  </task-flow-definition>
+</adfc-config>

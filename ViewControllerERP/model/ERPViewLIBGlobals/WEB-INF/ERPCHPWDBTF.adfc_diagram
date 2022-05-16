@@ -1,0 +1,75 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1">
+      <property
+         name="y">266.5</property>
+      <property
+         name="x">122.01367</property>
+   </OverallProperties>
+   <TaskFlowReturn
+      id="TaskFlowReturn2">
+      <property
+         name="activityId">ERPACTReturnPWDCHANGE</property>
+      <property
+         name="finish">true</property>
+      <property
+         name="start">false</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>ERPACTReturnPWDCHANGE&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Return&lt;/p>&lt;p>Outcome:  ERPACTReturnPWDCHANGE&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">98.79883</property>
+      <property
+         name="x">122.01367</property>
+   </TaskFlowReturn>
+   <View
+      id="View3">
+      <property
+         name="activityId">ERPPWDCHANHE</property>
+      <property
+         name="page">/ERPPWDCHANHE.jsf</property>
+      <property
+         name="start">false</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>ERPPWDCHANHE&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">260.5918</property>
+      <property
+         name="x">44.6709</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="View3"
+      to="TaskFlowReturn2">
+      <property
+         name="fromOutcome">ERPACTPWDCHANGEDONE</property>
+      <property
+         name="tosrcid">__2</property>
+      <property
+         name="fromsrcid">__1</property>
+      <property
+         name="sdm:polyPoints">T50,44.6709,206.5918,122.01367,152.44824,B50</property>
+   </ControlFlowCase>
+   <View
+      id="View5">
+      <property
+         name="activityId">ICONE_PAGE</property>
+      <property
+         name="page">/ICONE_PAGE.jsf</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>ICONE_PAGE&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">60.097656</property>
+      <property
+         name="x">-1.9882812</property>
+   </View>
+</SDM>

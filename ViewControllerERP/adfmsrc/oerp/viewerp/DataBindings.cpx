@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.3.10.47" id="DataBindings"
+             SeparateXMLFiles="false" Package="oerp.viewerp" ClientType="Generic">
+  <pageMap>
+    <page path="/ERPLogin.jsf" usageId="oerp_viewerp_ERPLoginPageDef"/>
+    <page path="/ERPMain.jsf" usageId="oerp_viewerp_ERPMainPageDef"/>
+    <page path="/WEB-INF/ERPLOGIN-BFT.xml#ERPLOGINBFT@ERPExeUserProfile"
+          usageId="oerp_viewerp_ERPLOGIN_BFT_ERPLOGINBFT_ExecuteWithParamsPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="oerp_viewerp_ERPLoginPageDef" path="oerp.viewerp.pageDefs.ERPLoginPageDef"/>
+    <page id="oerp_viewerp_ERPMainPageDef" path="oerp.viewerp.pageDefs.ERPMainPageDef"/>
+    <page id="oerp_viewerp_ERPLOGIN_BFT_ERPLOGINBFT_ExecuteWithParamsPageDef"
+          path="oerp.viewerp.pageDefs.ERPLOGIN_BFT_ERPLOGINBFT_ExecuteWithParamsPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="ERPERPModuleDataControl" Package="oerp.modelerp.erpam"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="ERPERPModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="ERPGlobalsModuleDataControl" Package="erpglobals.modelglobals.globalsam"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="ERPGlobalsModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="ERPTemModuleDataControl" Package="erptemplate.modeltemp.temam"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="ERPTemModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.1"
+                id="ERPLOGIN_BFT_ERPLOGINBFT_ExecuteWithParamsPageDef" Package="oerp.viewerp.pageDefs"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="SysUsersProfileRO" RangeSize="25" DataControl="ERPTemModuleDataControl"
+              id="SysUsersProfileROIterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="SysUsersProfileROIterator" id="ExecuteWithParams" RequiresUpdateModel="true"
+            Action="executeWithParams">
+      <NamedData NDName="P_ADF_USER_ID" NDValue="#{pageFlowScope.ERPMainClassBean.ERPuserId}"
+                 NDType="java.lang.Integer"/>
+    </action>
+  </bindings>
+</pageDefinition>

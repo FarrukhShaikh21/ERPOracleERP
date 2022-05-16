@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="ERPLogin">
+    <page>/ERPLogin.jsf</page>
+  </view>
+  <task-flow-call id="ERPLOGINBFT">
+    <task-flow-reference>
+      <document>/WEB-INF/ERPLOGIN-BFT.xml</document>
+      <id>ERPLOGINBFT</id>
+    </task-flow-reference>
+    <input-parameter id="__4">
+      <name>P_ADF_USER_SNO</name>
+      <value>#{viewScope.ERPMainClassBean.ERPuserId}</value>
+    </input-parameter>
+    <input-parameter id="__5">
+      <name>P_ADF_USER_CODE</name>
+      <value>#{viewScope.ERPMainClassBean.ERPuserCode}</value>
+    </input-parameter>
+    <input-parameter id="__6">
+      <name>P_ADF_PWD_EXPIRE</name>
+      <value>#{viewScope.ERPMainClassBean.ERPIsPwdExpired}</value>
+    </input-parameter>
+    <input-parameter id="__7">
+      <name>P_ADF_GLOBAL_DEF_COMPANY</name>
+      <value>#{viewScope.ERPMainClassBean.ERPGlobalDefaultComp}</value>
+    </input-parameter>
+    <input-parameter id="__8">
+      <name>P_ADF_USER_ATTRIBUTE</name>
+      <value>#{viewScope.ERPMainClassBean.ERPUserAttributes}</value>
+    </input-parameter>
+  </task-flow-call>
+  <control-flow-rule id="__1">
+    <from-activity-id>ERPLogin</from-activity-id>
+    <control-flow-case id="__2">
+      <from-outcome>ERP-ACT-LOGIN-APP</from-outcome>
+      <to-activity-id>ERPLOGINBFT</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__9">
+    <from-activity-id>ERPLOGINBFT</from-activity-id>
+    <control-flow-case id="__10">
+      <from-outcome>ERPOracleReturnActivity</from-outcome>
+      <to-activity-id>ERPLogin</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__3">
+    <managed-bean-name>ERPMainClassBean</managed-bean-name>
+    <managed-bean-class>oerp.viewerp.ERPMainClass</managed-bean-class>
+    <managed-bean-scope>view</managed-bean-scope>
+  </managed-bean>
+</adfc-config>
