@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="ERPLogin.jsf" id="d1">
+        <af:form id="f1">
+            <af:panelGridLayout id="pgl6" dimensionsFrom="parent">
+                <af:gridRow id="gr14" height="20%">
+                    <af:gridCell id="gc15" columnSpan="2" rowSpan="1" halign="stretch" valign="stretch">
+                        <af:panelGroupLayout id="pgl7" layout="vertical" styleClass="OracleERPLoginTop"/>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow marginTop="5px" height="50%" marginBottom="5px" id="gr13">
+                    <af:gridCell marginStart="5px" width="30%" id="gc13" halign="stretch" valign="stretch">
+                        <af:panelGridLayout id="pgl3">
+                            <af:gridRow marginTop="25px" height="20px" id="gr1">
+                                <af:gridCell marginStart="5px" marginEnd="5px" id="gc1"
+                                             inlineStyle="font-family:sans-serif; font-size:small;" halign="stretch">
+                                    <af:panelGroupLayout id="pgl4" halign="center">
+                                        <af:outputText value="Welcome" id="ot1" inlineStyle="color:#365E77"/>
+                                        <af:outputText value="|" id="ot3"/>
+                                        <af:outputText value="Login to get started" id="ot2"
+                                                       inlineStyle="color:#365E77"/>
+                                        <f:facet name="separator">
+                                            <af:spacer width="20" height="10" id="s2"/>
+                                        </f:facet>
+                                    </af:panelGroupLayout>
+                                </af:gridCell>
+                            </af:gridRow>
+                            <af:gridRow marginTop="10px" height="auto" id="gr2">
+                                <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc2" halign="stretch">
+                                    <af:inputText label="Label 1" id="it1" simple="true"
+                                                  placeholder="Enter your user name"
+                                                  styleClass="OracleERPLoginTextHeight"/>
+                                </af:gridCell>
+                            </af:gridRow>
+                            <af:gridRow marginTop="10px" height="auto" id="gr3">
+                                <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc3">
+                                    <af:inputText label="Label 2" id="it2" simple="true"
+                                                  placeholder="Enter your password"
+                                                  styleClass="OracleERPLoginTextHeight" secret="true"/>
+                                </af:gridCell>
+                            </af:gridRow>
+                            <af:gridRow marginTop="15px" height="auto" id="gr4" marginBottom="15px">
+                                <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc4" halign="stretch">
+                                    <af:selectBooleanCheckbox text="Remember me next time." id="sbc1" simple="true"
+                                                              contentStyle="color:#365E77"/>
+                                </af:gridCell>
+                            </af:gridRow>
+                            <af:gridRow marginTop="5px" height="auto" id="gr5">
+                                <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc5">
+                                    <af:button text="Sign In" id="b1" styleClass="OracleERPLoginButton"/>
+                                </af:gridCell>
+                            </af:gridRow>
+                            <af:gridRow marginTop="20px" height="auto" marginBottom="15px" id="gr6">
+                                <af:gridCell width="100%" id="gc6">
+                                    <af:link text="Forget your password?" id="l1" inlineStyle="color:#365E77"/>
+                                </af:gridCell>
+                            </af:gridRow>
+                        </af:panelGridLayout>
+                    </af:gridCell>
+                    <af:gridCell marginStart="5px" width="70%" marginEnd="5px" id="gc14">
+                        <af:panelGridLayout id="pgl5" dimensionsFrom="parent">
+                            <af:gridRow marginTop="5px" id="gr7">
+                                <af:gridCell marginStart="5px" width="5%" marginEnd="5px" id="gc7" halign="center"
+                                             valign="middle"/>
+                            </af:gridRow>
+                            <af:gridRow marginTop="15px" height="auto" id="gr8">
+                                <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc8" halign="start">
+                                    <af:outputText value="Multiple Problems" id="ot4"
+                                                   inlineStyle="font-size:xx-large;color:#365E77"/>
+                                </af:gridCell>
+                            </af:gridRow>
+                            <af:gridRow marginTop="5px" height="auto" id="gr9">
+                                <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc9">
+                                    <af:outputText value="Unique Solutions" id="ot5"
+                                                   inlineStyle="font-size:xx-large;color:#365E77"/>
+                                </af:gridCell>
+                            </af:gridRow>
+                            <af:gridRow marginTop="5px" height="auto" id="gr10">
+                                <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc10">
+                                    <af:outputText value="Your business processess and requirements are unique for your business."
+                                                   id="ot7"/>
+                                </af:gridCell>
+                            </af:gridRow>
+                            <af:gridRow marginTop="5px" height="auto" id="gr11">
+                                <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc11">
+                                    <af:outputText value="Choosing an ERP system is a chance to critically look at your business processes &amp; to see  if they can be made more efficient"
+                                                   id="ot6"/>
+                                </af:gridCell>
+                            </af:gridRow>
+                            <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr12">
+                                <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc12"/>
+                            </af:gridRow>
+                        </af:panelGridLayout>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow id="gr16" height="30%">
+                    <af:gridCell id="gc17" columnSpan="2" rowSpan="1" halign="stretch" valign="stretch">
+                        <af:panelGroupLayout id="pgl9" layout="vertical" styleClass="ERPLoginBottom"/>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow id="gr15" height="0%">
+                    <af:gridCell id="gc16" width="100%" valign="bottom" halign="stretch" columnSpan="2">
+                        <af:panelGroupLayout id="pgl2" layout="vertical" halign="center" valign="bottom"
+                                             styleClass="OracleERPLoginBottom">
+                            <af:separator id="s4"/>
+                            <af:outputText value="Oracle Corporation. All rights reserved." id="ot8"
+                                           inlineStyle="color:white"/>
+                        </af:panelGroupLayout>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+            <af:panelStretchLayout id="psl1" topHeight="100px" bottomHeight="40%"
+                                   styleClass="OracleERPLoginCenter" endWidth="600px" startWidth="50px"
+                                   dimensionsFrom="parent" rendered="false">
+                <f:facet name="bottom">
+                    <af:panelStretchLayout id="psl2" styleClass="OracleERPLoginBottom">
+                        <f:facet name="bottom"/>
+                        <f:facet name="top"/>
+                        <f:facet name="center">
+                            <af:spacer width="10" height="10" id="s3"/>
+                        </f:facet>
+                    </af:panelStretchLayout>
+                </f:facet>
+                <f:facet name="center"/>
+                <f:facet name="start">
+                    <af:spacer width="10" height="10" id="s1"/>
+                </f:facet>
+                <f:facet name="end"/>
+                <f:facet name="top">
+                    <af:panelGroupLayout id="pgl1" styleClass="OracleERPLoginTop" layout="vertical"/>
+                </f:facet>
+            </af:panelStretchLayout>
+        </af:form>
+    </af:document>
+</f:view>

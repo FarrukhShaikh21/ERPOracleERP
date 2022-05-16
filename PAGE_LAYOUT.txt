@@ -1,0 +1,2 @@
+https://www.oracle.com/webfolder/ux/middleware/alta/patterns/PageLayout.html#chars
+https://www.oracle.com/webfolder/technetwork/jet/jetCookbook.html?component=forms&demo=formlabelwrap
